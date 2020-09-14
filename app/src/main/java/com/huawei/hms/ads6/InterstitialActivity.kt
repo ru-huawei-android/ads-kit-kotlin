@@ -14,8 +14,6 @@ import kotlinx.android.synthetic.main.activity_interstitial.*
 
 class InterstitialActivity : AppCompatActivity(R.layout.activity_interstitial) {
 
-    private val TAG = BannerActivity::class.java.simpleName
-
     private lateinit var interstitialAd: InterstitialAd
     private lateinit var loadAd: View.OnClickListener
 

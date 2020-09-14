@@ -14,8 +14,6 @@ import com.huawei.hms.ads.consent.inter.ConsentUpdateListener
 class ConsentActivity : AppCompatActivity(R.layout.activity_consent),
     ConsentDialog.ConsentDialogCallback {
 
-    private val TAG = ConsentActivity::class.java.simpleName
-
     private var providers: MutableList<AdProvider> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,21 +35,21 @@ class ConsentActivity : AppCompatActivity(R.layout.activity_consent),
             Log.d(TAG, "ConsentStatus: $consentStatus, isNeedConsent: $isNeedConsent")
 
             if (isNeedConsent) {
-                // If ConsentStatus is set to UNKNOWN, re-collect user consent.
+                // Если ConsentStatus == UNKNOWN, заново получаем согласие пользователя.
                 if (consentStatus == ConsentStatus.UNKNOWN) {
                     providers.clear()
                     providers.addAll(adProviders)
                     showConsentDialog()
                 } else {
-                    // If ConsentStatus is set to PERSONALIZED or NON_PERSONALIZED, no dialog box is displayed to collect user consent.
+                    // Если ConsentStatus == PERSONALIZED или NON_PERSONALIZED, никакого диалога показывать не надо
                 }
             } else {
-                // If a country does not require your app to collect user consent before displaying ads, your app can request a personalized ad directly.
-                Log.d(TAG,"User is NOT need Consent")
+                // Если в регионе не требуется пользовательское согласие на персонализированную рекламу
+                // Можно запросить её явно
+                Log.d(TAG,"User consent not needed")
             }
         }
 
-        // In this demo,if the request fails ,you can load a non-personalized ad by default.
         override fun onFail(errorDescription: String) {
             Log.d(TAG, "User's consent status failed to update: $errorDescription")
             Toast.makeText(applicationContext, "User's consent status failed to update: $errorDescription", Toast.LENGTH_LONG).show()
@@ -59,7 +57,6 @@ class ConsentActivity : AppCompatActivity(R.layout.activity_consent),
     }
 
     private fun showConsentDialog() {
-        // Start to process the consent dialog box.
         ConsentDialog(this, providers).apply {
             setCallback(this@ConsentActivity)
             setCanceledOnTouchOutside(false)

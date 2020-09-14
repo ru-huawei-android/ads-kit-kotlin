@@ -31,32 +31,34 @@ import kotlinx.android.synthetic.main.activity_banner.*
 
 class BannerActivity : AppCompatActivity(R.layout.activity_banner) {
 
-    var bannerView: BannerView? = null
+    private lateinit var bannerView: BannerView
     private lateinit var loadAd: View.OnClickListener
-    private val TAG = BannerActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        bannerView = BannerView(this)
+
         loadAd = View.OnClickListener {
-            if (bannerView != null) {
-                adFrame.removeView(bannerView)
-                bannerView?.destroy()
-            }
+            // Убираем существующий bannerView из фрейма под рекламу
+            adFrame.removeView(bannerView)
+            bannerView.destroy()
 
             // создаем view для баннера и добавляем его на layout
             bannerView = BannerView(this)
-            adFrame.addView(bannerView);
-            bannerView?.adId = getString(R.string.ad_banner)
-            bannerView?.bannerAdSize = getBannerSize(sizeRadioGroup.checkedRadioButtonId)
-            bannerView?.setBackgroundColor(getColorBackGround(colorRadioGroup.checkedRadioButtonId))
-            bannerView?.adListener = adListener
-            // загружаем рекламу
-            bannerView?.loadAd(AdParam.Builder().build())
+            bannerView.apply {
+                adFrame.addView(this);
+                adId = getString(R.string.ad_banner)
+                bannerAdSize = getBannerSize(sizeRadioGroup.checkedRadioButtonId)
+                setBackgroundColor(getColorBackGround(colorRadioGroup.checkedRadioButtonId))
+                adListener = adListener
+                // загружаем рекламу
+                loadAd(AdParam.Builder().build())
+            }
         }
+
         loadAdBtn.setOnClickListener(loadAd)
         loadAdBtn.performClick()
     }
-
 
     private fun getBannerSize(id: Int): BannerAdSize {
         return when (id) {

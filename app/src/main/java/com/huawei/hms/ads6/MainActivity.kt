@@ -17,8 +17,6 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private val TAG = MainActivity::class.java.simpleName
-
     var dataset: List<AdFormat> = listOf(
         AdFormat(
             "Banner Ad",

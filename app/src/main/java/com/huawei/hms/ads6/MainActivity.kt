@@ -87,9 +87,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun showConsentDialog(providers: MutableList<AdProvider>) {
-        val dialog = ConsentDialog(this, providers)
-        dialog.setCanceledOnTouchOutside(false)
-        dialog.show()
+        ConsentDialog(this, providers).apply {
+            setCanceledOnTouchOutside(false)
+            show()
+        }
     }
 
 }

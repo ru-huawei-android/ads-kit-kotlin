@@ -1,6 +1,5 @@
 package com.huawei.hms.ads6
 
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +10,6 @@ import com.huawei.hms.ads.reward.RewardAd
 import com.huawei.hms.ads.reward.RewardAdLoadListener
 import com.huawei.hms.ads.reward.RewardAdStatusListener
 import kotlinx.android.synthetic.main.activity_reward.*
-import kotlinx.android.synthetic.main.text_view.*
 
 class RewardActivity : AppCompatActivity(R.layout.activity_reward) {
 

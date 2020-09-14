@@ -52,7 +52,7 @@ class ConsentActivity : AppCompatActivity(R.layout.activity_consent),
 
         override fun onFail(errorDescription: String) {
             Log.d(TAG, "User's consent status failed to update: $errorDescription")
-            Toast.makeText(applicationContext, "User's consent status failed to update: $errorDescription", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, getString(R.string.consent_update_failed, errorDescription), Toast.LENGTH_LONG).show()
         }
     }
 

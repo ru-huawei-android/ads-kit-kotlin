@@ -79,5 +79,7 @@
     <string name="consent_change_setting">You can change this setting anytime in the app.</string>
     <string name="thank_you">Thank you!</string>
     <string name="Consent_text">This is a Consent Example</string>
+    <!-- Consent activity-->
+    <string name="consent_update_failed">User\'s consent status failed to update: %1$s</string>
 
 </resources>

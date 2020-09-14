@@ -6,6 +6,8 @@
 
     <color name="colorRewardGiven">#4CAF50</color>
     <color name="colorRewardRejected">#F44336</color>
+    <color name="theme_link_color_blue">#0000FF</color>
+
 
     <color name="dialog_title">#e6000000</color>
 </resources>

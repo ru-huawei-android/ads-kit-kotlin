@@ -2,20 +2,17 @@ package com.huawei.hms.ads6
 
 import android.app.Dialog
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.method.LinkMovementMethod
-import android.text.method.ScrollingMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
-import android.view.LayoutInflater
+import android.util.TypedValue
 import android.view.View
 import android.view.Window
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.huawei.hms.ads.R
 import com.huawei.hms.ads.consent.bean.AdProvider
@@ -29,7 +26,6 @@ class ConsentDialog(context: Context, providers: MutableList<AdProvider>): Dialo
     private var mContext: Context = context
     private var adProviders: List<AdProvider> = providers
 
-    private lateinit var inflater: LayoutInflater
     private lateinit var consentDialogView: View
     private lateinit var initView: View
     private lateinit var moreInfoView: View
@@ -48,10 +44,8 @@ class ConsentDialog(context: Context, providers: MutableList<AdProvider>): Dialo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val dialogWindow: Window? = window
-        dialogWindow?.requestFeature(Window.FEATURE_NO_TITLE)
-        inflater = LayoutInflater.from(mContext)
-        inflater.apply {
+        window?.requestFeature(Window.FEATURE_NO_TITLE)
+        layoutInflater.apply {
             consentDialogView = inflate(R.layout.dialog_consent, null)
             setContentView(consentDialogView)
             initView = inflate(R.layout.dialog_consent_content, null)
@@ -100,7 +94,7 @@ class ConsentDialog(context: Context, providers: MutableList<AdProvider>): Dialo
                 showTouchHereInfo()
             }
         }
-        val colorSpan = ForegroundColorSpan(Color.parseColor("#0000FF"))
+        val colorSpan = ForegroundColorSpan(getLinkColor())
         val initTouchHereStart = mContext.resources.getInteger(R.integer.init_here_start)
         val initTouchHereEnd = mContext.resources.getInteger(R.integer.init_here_end)
 
@@ -132,7 +126,7 @@ class ConsentDialog(context: Context, providers: MutableList<AdProvider>): Dialo
         val moreInfoTouchHereEnd = mContext.resources.getInteger(R.integer.more_info_here_end)
 
         spanMoreInfoText.setSpan(moreInfoTouchHere, moreInfoTouchHereStart, moreInfoTouchHereEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spanMoreInfoText.setSpan(ForegroundColorSpan(Color.parseColor("#0000FF")), moreInfoTouchHereStart, moreInfoTouchHereEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spanMoreInfoText.setSpan(ForegroundColorSpan(getLinkColor()), moreInfoTouchHereStart, moreInfoTouchHereEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
        rootView.findViewById<TextView>(R.id.consent_center_more_info_content)?.apply {
            text = spanMoreInfoText
@@ -163,5 +157,11 @@ class ConsentDialog(context: Context, providers: MutableList<AdProvider>): Dialo
     private fun addContentView(view: View) {
         consent_center_layout.removeAllViews()
         consent_center_layout.addView(view)
+    }
+
+    private fun getLinkColor(): Int {
+        val tv = TypedValue()
+        mContext.theme.resolveAttribute(R.attr.theme_link_color, tv, true)
+        return tv.data
     }
 }

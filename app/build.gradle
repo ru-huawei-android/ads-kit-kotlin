@@ -6,7 +6,7 @@ android {
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
     defaultConfig {
-        applicationId "com.huawei.kkostrov.adskitdemo.huawei"
+        applicationId "com.sample.huawei.ads"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -15,10 +15,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("huaweisamplekey.store")
-            storePassword "huawei"
-            keyAlias "huaweisample"
-            keyPassword "huawei"
+            storeFile file("HuaweiSampleKey.jks")
+            storePassword "HuaweiSampleKey"
+            keyAlias "HuaweiSampleKey"
+            keyPassword "HuaweiSampleKey"
             v1SigningEnabled true
             v2SigningEnabled true
         }

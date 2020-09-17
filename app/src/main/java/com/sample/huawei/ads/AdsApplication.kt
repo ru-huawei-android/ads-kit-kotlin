@@ -1,4 +1,4 @@
-package com.huawei.hms.ads6
+package com.sample.huawei.ads
 
 import android.app.Application
 import com.huawei.hms.ads.HwAds

@@ -1,4 +1,4 @@
-package com.huawei.hms.ads6
+package com.sample.huawei.ads
 
 import android.content.Context
 import android.os.Bundle

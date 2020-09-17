@@ -1,4 +1,4 @@
-package com.huawei.hms.ads6
+package com.sample.huawei.ads
 
 import android.os.Bundle
 import android.util.Log
@@ -52,7 +52,7 @@ class InterstitialActivity : AppCompatActivity(R.layout.activity_interstitial) {
         override fun onAdFailed(errorCode: Int) {
             Log.d(TAG, "onAdFailed $errorCode")
             Toast.makeText(applicationContext,
-                Utils.getErrorMessage(errorCode), Toast.LENGTH_LONG).show()
+                    Utils.getErrorMessage(errorCode), Toast.LENGTH_LONG).show()
         }
 
         override fun onAdClosed() {

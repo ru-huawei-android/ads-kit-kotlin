@@ -1,4 +1,4 @@
-package com.huawei.hms.ads6
+package com.sample.huawei.ads
 
 import android.os.Bundle
 import android.widget.Toast
@@ -57,7 +57,7 @@ class RewardActivity : AppCompatActivity(R.layout.activity_reward) {
 
         override fun onRewardAdFailedToShow(errorCode: Int) {
             Toast.makeText(applicationContext,
-                Utils.getErrorMessage(errorCode), Toast.LENGTH_SHORT).show()
+                    Utils.getErrorMessage(errorCode), Toast.LENGTH_SHORT).show()
         }
 
         override fun onRewardAdOpened() {
@@ -75,7 +75,7 @@ class RewardActivity : AppCompatActivity(R.layout.activity_reward) {
     private val rewardAdLoadListener = object : RewardAdLoadListener() {
         override fun onRewardAdFailedToLoad(errorCode: Int) {
             Toast.makeText(applicationContext,
-                Utils.getErrorMessage(errorCode), Toast.LENGTH_SHORT).show()
+                    Utils.getErrorMessage(errorCode), Toast.LENGTH_SHORT).show()
         }
 
         override fun onRewardedLoaded() {

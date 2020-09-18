@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-package com.huawei.hms.ads6
+package com.sample.huawei.ads
 
 import android.graphics.Color
 import android.os.Bundle
@@ -94,7 +94,7 @@ class BannerActivity : AppCompatActivity(R.layout.activity_banner) {
         override fun onAdFailed(errorCode: Int) {
             Log.d(TAG,"onAdFailed $errorCode")
             Toast.makeText(applicationContext,
-                Utils.getErrorMessage(errorCode), Toast.LENGTH_LONG).show()
+                    Utils.getErrorMessage(errorCode), Toast.LENGTH_LONG).show()
         }
 
         override fun onAdOpened() {

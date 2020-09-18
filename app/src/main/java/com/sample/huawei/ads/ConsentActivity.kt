@@ -1,4 +1,4 @@
-package com.huawei.hms.ads6
+package com.sample.huawei.ads
 
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +12,7 @@ import com.huawei.hms.ads.consent.inter.Consent
 import com.huawei.hms.ads.consent.inter.ConsentUpdateListener
 
 class ConsentActivity : AppCompatActivity(R.layout.activity_consent),
-    ConsentDialog.ConsentDialogCallback {
+        ConsentDialog.ConsentDialogCallback {
 
     private var providers: MutableList<AdProvider> = mutableListOf()
 

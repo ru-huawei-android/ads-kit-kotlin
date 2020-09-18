@@ -59,7 +59,6 @@ dependencies {
     // Если вы используете proguard, правила можно скопировать из файла proguard-project.txt
     implementation 'com.huawei.hms:ads-lite:13.4.32.303'
     implementation 'com.huawei.hms:ads-consent:3.4.32.303'
-
 }
 
 apply plugin: 'com.huawei.agconnect'

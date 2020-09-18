@@ -17,7 +17,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    var dataset: List<AdFormat> = listOf(
+    private var dataset: List<AdFormat> = listOf(
         AdFormat(
             "Banner Ad",
             BannerActivity::class.java

@@ -29,8 +29,8 @@ class InterstitialActivity : AppCompatActivity(R.layout.activity_interstitial) {
 
     private fun getAdId(id: Int): String? {
         return when (id) {
-            R.id.display_image -> getString(R.string.ad_interestial_img)
-            else -> getString(R.string.ad_interestial_vid)
+            R.id.display_image -> getString(R.string.ad_interstitial_img)
+            else -> getString(R.string.ad_interstitial_vid)
         }
     }
 
